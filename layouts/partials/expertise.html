@@ -1,0 +1,44 @@
+<section class="expertise section" id="expertise">
+  <div class="section__inner">
+    <h2 class="section__title">Expertise</h2>
+    <div class="expertise__grid">
+      {{ range site.Params.expertise }}
+      <div class="expertise__card">
+        <span class="expertise__icon">{{ .icon | safeHTML }}</span>
+        <h3 class="expertise__name">{{ .name }}</h3>
+        <p class="expertise__desc">{{ .description }}</p>
+        {{ with .tags }}
+        <ul class="tag-list">
+          {{ range . }}<li class="tag">{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
+      </div>
+      {{ else }}
+      <div class="expertise__card">
+        <span class="expertise__icon">⚙️</span>
+        <h3 class="expertise__name">Infrastructure as Code</h3>
+        <p class="expertise__desc">Terraform, Ansible, Pulumi — gestion déclarative des ressources cloud.</p>
+        <ul class="tag-list">
+          <li class="tag">Terraform</li><li class="tag">Ansible</li><li class="tag">AWS</li>
+        </ul>
+      </div>
+      <div class="expertise__card">
+        <span class="expertise__icon">🚀</span>
+        <h3 class="expertise__name">CI/CD & Déploiement</h3>
+        <p class="expertise__desc">Pipelines automatisés, GitOps, déploiements sans interruption.</p>
+        <ul class="tag-list">
+          <li class="tag">GitLab CI</li><li class="tag">ArgoCD</li><li class="tag">Kubernetes</li>
+        </ul>
+      </div>
+      <div class="expertise__card">
+        <span class="expertise__icon">📊</span>
+        <h3 class="expertise__name">Observabilité</h3>
+        <p class="expertise__desc">Métriques, logs, traces — visibilité complète sur les systèmes.</p>
+        <ul class="tag-list">
+          <li class="tag">Prometheus</li><li class="tag">Grafana</li><li class="tag">Loki</li>
+        </ul>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

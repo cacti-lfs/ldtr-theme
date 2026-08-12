@@ -1,0 +1,22 @@
+{{ define "main" }}
+<article class="post-page section">
+  <div class="section__inner post-page__inner">
+    <a class="post-page__back" href="javascript:history.back()">← Retour</a>
+    <header class="post-page__header">
+      <h1 class="post-page__title">{{ .Title }}</h1>
+      {{ with .Description }}<p class="post-page__desc">{{ . }}</p>{{ end }}
+      <div class="post-page__meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+        {{ with .Params.tags }}
+        <ul class="tag-list">
+          {{ range . }}<li class="tag">{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
+      </div>
+    </header>
+    <div class="post-page__content prose">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+{{ end }}

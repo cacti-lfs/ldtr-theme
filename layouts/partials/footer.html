@@ -1,0 +1,22 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__left">
+      <p class="footer__name">{{ site.Params.author.name | default site.Title }}</p>
+      <p class="footer__tagline">{{ site.Params.description | default "Disponible pour des missions freelance et des opportunités CDI." }}</p>
+    </div>
+    <nav class="footer__links" aria-label="Liens de contact">
+      {{ range site.Params.socials }}
+      {{ if eq .label "Email" }}
+      <a class="footer__link" href="#contact">{{ .label }}</a>
+      {{ else }}
+      <a class="footer__link" href="{{ .url }}" target="_blank" rel="noopener me">{{ .label }}</a>
+      {{ end }}
+      {{ else }}
+      <a class="footer__link" href="#contact">Email</a>
+      <a class="footer__link" href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+      {{ end }}
+    </nav>
+  </div>
+  <p class="footer__copy">© {{ now.Year }} {{ site.Params.author.name | default site.Title }}. Construit avec Hugo & ldtr-theme.</p>
+</footer>

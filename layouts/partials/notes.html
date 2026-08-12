@@ -1,0 +1,32 @@
+<section class="notes section" id="notes">
+  <div class="section__inner">
+    <h2 class="section__title">Notes</h2>
+    <p class="section__subtitle">Écrits techniques, retours d'expérience et explorations.</p>
+    <div class="notes__grid">
+      {{ $posts := where site.RegularPages "Section" "posts" }}
+      {{ range first 6 $posts }}
+      <article class="note-card">
+        <time class="note-card__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+        <h3 class="note-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        {{ with .Params.tags }}
+        <ul class="tag-list">
+          {{ range . }}<li class="tag">{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
+      </article>
+      {{ else }}
+      <p class="notes__empty">Aucune note pour l'instant — revenez bientôt.</p>
+      {{ end }}
+    </div>
+    {{ $allPosts := where site.RegularPages "Section" "posts" }}
+    {{ if gt (len $allPosts) 6 }}
+    <div class="section__more">
+      <a class="btn btn--ghost btn--sm" href="/posts/">Voir toutes les notes →</a>
+    </div>
+    {{ else if $allPosts }}
+    <div class="section__more">
+      <a class="btn btn--ghost btn--sm" href="/posts/">Voir toutes les notes →</a>
+    </div>
+    {{ end }}
+  </div>
+</section>

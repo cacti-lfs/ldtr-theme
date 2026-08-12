@@ -1,0 +1,20 @@
+{{ define "main" }}
+<section class="list-page section">
+  <div class="section__inner">
+    <h1 class="section__title">{{ .Title }}</h1>
+    <div class="notes__grid">
+      {{ range .Pages }}
+      <article class="note-card">
+        <time class="note-card__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+        <h3 class="note-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        {{ with .Params.tags }}
+        <ul class="tag-list">
+          {{ range . }}<li class="tag">{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

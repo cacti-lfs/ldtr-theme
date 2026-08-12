@@ -1,0 +1,26 @@
+{{ define "main" }}
+<article class="projet-page section">
+  <div class="section__inner projet-page__inner">
+    <a class="projet-page__back" href="/#projects">← Retour aux projets</a>
+    <header class="projet-page__header">
+      <h1 class="projet-page__title">{{ .Title }}</h1>
+      {{ with .Description }}<p class="projet-page__desc">{{ . }}</p>{{ end }}
+      <div class="projet-page__meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+        {{ with .Params.tags }}
+        <ul class="tag-list">
+          {{ range . }}<li class="tag">{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
+      </div>
+      <div class="projet-page__links">
+        {{ with .Params.repo }}<a class="btn btn--ghost btn--sm" href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end }}
+        {{ with .Params.url }}<a class="btn btn--primary btn--sm" href="{{ . }}" target="_blank" rel="noopener">Démo</a>{{ end }}
+      </div>
+    </header>
+    <div class="projet-page__content prose">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+{{ end }}

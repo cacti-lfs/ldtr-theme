@@ -1,0 +1,35 @@
+<section class="formations section" id="formations">
+  <div class="section__inner">
+    <h2 class="section__title">Formations</h2>
+    {{ $formations := site.Params.formations }}
+    {{ if $formations }}
+    <ol class="timeline" id="formations-timeline">
+      {{ range $i, $f := $formations }}
+      <li class="timeline__item{{ if ge $i 2 }} timeline__item--hidden{{ end }}">
+        <div class="timeline__meta">
+          <span class="timeline__period">{{ $f.period }}</span>
+          {{ with $f.school }}<span class="timeline__company">{{ . }}</span>{{ end }}
+        </div>
+        <div class="timeline__content">
+          <h3 class="timeline__role">{{ $f.diploma }}</h3>
+          {{ with $f.description }}<p class="timeline__desc">{{ . }}</p>{{ end }}
+        </div>
+      </li>
+      {{ end }}
+    </ol>
+    {{ if gt (len $formations) 2 }}
+    {{ $extra := sub (len $formations) 2 }}
+    <div class="section__more">
+      <button class="btn btn--ghost btn--sm js-voir-plus"
+        data-target="formations-timeline"
+        data-label-less="Voir moins"
+        aria-expanded="false">
+        Voir plus ({{ $extra }} formation{{ if gt $extra 1 }}s{{ end }})
+      </button>
+    </div>
+    {{ end }}
+    {{ else }}
+    <p style="color:var(--text-muted)">Ajoutez vos formations dans <code>hugo.toml</code> via <code>[[params.formations]]</code>.</p>
+    {{ end }}
+  </div>
+</section>
