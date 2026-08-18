@@ -437,6 +437,12 @@ h3 { font-size: 1.1rem; }
   border: none;
   text-shadow: 0 0 6px #4ade80, 9 9 2px #4ade80;
 }
+pre.logo-cactus {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+}
 .logo-name {
   font-weight: 800;
   font-size: 1rem;
