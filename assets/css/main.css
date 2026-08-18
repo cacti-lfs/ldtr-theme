@@ -425,6 +425,7 @@ h3 { font-size: 1.1rem; }
   font-weight: 900;
   line-height: 1;
   white-space: pre;
+  word-spacing: 0;
   letter-spacing: 0;
   color: var(--accent);
   display: inline-block;
