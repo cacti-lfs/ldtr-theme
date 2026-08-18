@@ -1,10 +1,10 @@
-<section class="experience section" id="experience">
+<section class="experiences section" id="experiences">
   <div class="section__inner">
     <h2 class="section__title">Expérience</h2>
-    {{ $experience := site.Params.experience }}
-    {{ if $experience }}
-    <ol class="timeline" id="experience-timeline">
-      {{ range $i, $e := $experience }}
+    {{ $experiences := site.Params.experiences }}
+    {{ if $experiences }}
+    <ol class="timeline" id="experiences-timeline">
+      {{ range $i, $e := $experiences }}
       <li class="timeline__item{{ if ge $i 2 }} timeline__item--hidden{{ end }}">
         <div class="timeline__meta">
           <span class="timeline__period">{{ $e.period }}</span>
@@ -22,15 +22,9 @@
       </li>
       {{ end }}
     </ol>
-    {{ if gt (len $experience) 2 }}
-    {{ $extra := sub (len $experience) 2 }}
+    {{ if gt (len $experiences) 2 }}
     <div class="section__more">
-      <button class="btn btn--ghost btn--sm js-voir-plus"
-        data-target="experience-timeline"
-        data-label-less="Voir moins"
-        aria-expanded="false">
-        Voir plus ({{ $extra }} expérience{{ if gt $extra 1 }}s{{ end }})
-      </button>
+      <a class="btn btn--ghost btn--sm" href="/experiences/">Voir toutes les expériences →</a>
     </div>
     {{ end }}
     {{ else }}
